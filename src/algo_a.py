@@ -23,5 +23,6 @@ def apply(input):
 model = load()
 
 
-output = apply([[4.0, 3.0, 2.2, -1., 0.25]])
-print(output)
+if __name__ == "__main__":
+    output = apply([[4.0, 3.0, 2.2, -1., 0.25]])
+    print(output)
