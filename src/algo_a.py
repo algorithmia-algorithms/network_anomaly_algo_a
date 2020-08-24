@@ -18,7 +18,7 @@ def load():
 def apply(input):
     tensor = tf.constant(input)
     output = model.predict(tensor)
-    return output.tolist()[0]
+    return output.tolist()[0][0]
 
 model = load()
 
