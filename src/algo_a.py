@@ -3,6 +3,7 @@ import tensorflow as tf
 import logging
 import shutil
 import os
+from pathlib import Path
 from time import time
 client = Algorithmia.client()
 
@@ -29,6 +30,7 @@ class TF_Logging():
                 event = {"timestamp": timestamp, "message": message}
                 self.events.append(event)
         os.remove(self.log_file)
+        Path(self.log_file).touch()
 
     def get_events(self):
         return self.events
