@@ -1,4 +1,3 @@
-import logging
 import shutil
 import tensorflow as tf
 from tensorflow.keras import layers
@@ -21,9 +20,9 @@ class Model(tf.keras.Model):
 def main():
     model = Model()
     model.build((1, 5))
-    l = tf.constant([[4.0, 3.0, 2.2, -1., 0.25]], shape=(1, 5))
-    r = model.predict(l)
-    print(r)
+    test_input = tf.constant([[4.0, 3.0, 2.2, -1., 0.25]], shape=(1, 5))
+    test_output = model.predict(test_input)
+    print(test_output)
     model.save("/tmp/tf_model")
     shutil.make_archive("/tmp/tf_model_example", 'zip', "/tmp/tf_model")
 

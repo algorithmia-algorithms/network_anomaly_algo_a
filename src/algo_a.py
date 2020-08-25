@@ -2,6 +2,7 @@ import Algorithmia
 import tensorflow as tf
 import logging
 import shutil
+import os
 from time import time
 client = Algorithmia.client()
 
