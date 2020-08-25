@@ -1,7 +1,22 @@
+import logging
+import shutil
 import tensorflow as tf
 from tensorflow.keras import layers
-import shutil
-import os
+
+LOGGING_FILE = "/tmp/logging_file"
+
+
+def get_logger():
+    log = logging.getLogger("tensorflow")
+    log.setLevel("DEBUG")
+    formatter = logging.Formatter('%(created)f - %(levelname)s - %(message)s')
+    fh = logging.FileHandler(LOGGING_FILE)
+    fh.setFormatter(formatter)
+    log.addHandler(fh)
+
+
+get_logger()
+
 
 class Model(tf.keras.Model):
     def __init__(self):
@@ -15,7 +30,6 @@ class Model(tf.keras.Model):
         o2 = self.layer2(o1)
         final = self.out(o2)
         return final
-
 
 
 def main():
