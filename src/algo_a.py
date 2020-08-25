@@ -30,10 +30,12 @@ class TF_Logging():
                 event = {"timestamp": timestamp, "message": message}
                 self.events.append(event)
         os.remove(self.log_file)
-        Path(self.log_file).touch()
+        open(self.log_file, 'w').close()
 
     def get_events(self):
-        return self.events
+        events = self.events
+        self.events = []
+        return events
 
     def get_logger(self):
         log = logging.getLogger("tensorflow")
@@ -67,5 +69,9 @@ LOGGER = TF_Logging(LOGGING_FILE)
 MODEL = load()
 
 if __name__ == "__main__":
-    output = apply([[4.0, 3.0, 2.2, -1., 0.25]])
+    output = apply([[4.0, 3.0, 2.2, -1.1, 0.25]])
+    print(output)
+    output = apply([[4.0, 3.0, 2.2, -1.1, 0.25]])
+    print(output)
+    output = apply([[4.0, 3.0, 2.2, -1.1, 0.25]])
     print(output)
