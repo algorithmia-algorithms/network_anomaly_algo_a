@@ -7,11 +7,9 @@ client = Algorithmia.client()
 
 SM_PATH = "/tmp/saved_model"
 MODEL_PATH = "data://network_anomaly_detection/models/modela_tf_23_aug2320.zip"
-LOGGING_FILE = "/tmp/logging_file"
 
 class TF_Logging():
-    def __init__(self, logging_file):
-        self.log_file = logging_file
+    def __init__(self):
         self.events = []
 
     def insert_event(self, message):
@@ -35,7 +33,7 @@ def load():
 
 
 def apply(input):
-    LOGGER = TF_Logging(LOGGING_FILE)
+    LOGGER = TF_Logging()
     LOGGER.insert_event("input to ALGO_A is: {}".format(input))
     tensor = tf.constant(input)
     outcome = MODEL.predict(tensor).tolist()[0][0]
