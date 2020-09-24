@@ -35,6 +35,7 @@ def load():
 def apply(input):
     LOGGER = TF_Logging()
     LOGGER.insert_event("input to ALGO_A is: {}".format(input))
+    LOGGER.insert_event("TF version: {}".format(tf.version.VERSION))
     tensor = tf.constant(input)
     outcome = MODEL.predict(tensor).tolist()[0][0]
     LOGGER.insert_event("outcome predicted by ALGO_A is: {}".format(outcome))
